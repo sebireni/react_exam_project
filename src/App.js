@@ -1,11 +1,10 @@
-// import logo from './logo.svg';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Switch } from "react-router-dom";
 import './App.css';
 
 import Navbar from "./components/layouts/Navbar";
 import Home from "./components/pages/Home";
-import Speakers from "./components/pages/Speakers";
+import Lyrics from "./components/pages/Lyrics";
 import About from "./components/pages/About";
 import Footer from "./components/layouts/Footer";
 
@@ -15,7 +14,7 @@ function App() {
       <Navbar/>
       <Switch>
         <Route exact path="/" component={Home}/>
-        <Route path="/speakers" component={Speakers}/>
+        <Route path="/lyrics" component={Lyrics}/>
         <Route path="/about" component={About}/>
       </Switch>
       <Footer/>
