@@ -1,7 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useState, useEffect } from 'react';
 
 const Home = () => {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const registration = {firstName, lastName, email};
+
+        //!!!!!!!not done
+        fetch("http://localhost:8000/registrations", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(registration)
+        }).then(() => {
+            console.log("new registration added");
+        });
+    };
+
     return (
         <MainContainer className="home-main-container">
             <div className="contanier">
@@ -13,19 +32,40 @@ const Home = () => {
                     <h3 className="display-6 text-uppercase text-center py-3">
                         registration
                     </h3>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="form-row mr-auto">
                             <div className="col-md-6 mb-4">
-                                <input type="text" className="form-control" placeholder="First Name"/>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="First Name"
+                                    required
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                />
                             </div>
                             <div className="col-md-6 mb-4">
-                                <input type="text" className="form-control" placeholder="Last Name"/>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Last Name"
+                                    required
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                />
                             </div>
                             <div className="col-md-6 mb-4">
-                                <input type="text" className="form-control" placeholder="Email"/>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Email"
+                                    required
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
                             </div>
                         </div>
-                    <button className="btn btn-primary text-uppercase">Register</button>
+                    <button className="btn btn-primary text-uppercase">Submit</button>
                     </form>
                 </div>
             </div>
