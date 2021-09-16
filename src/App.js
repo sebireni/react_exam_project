@@ -5,7 +5,7 @@ import './App.css';
 import Navbar from "./components/layouts/Navbar";
 import Home from "./components/pages/Home";
 import Lyrics from "./components/pages/Lyrics";
-import About from "./components/pages/About";
+import DataFromJSON from "./components/pages/DataFromJSON";
 import Footer from "./components/layouts/Footer";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route path="/lyrics" component={Lyrics}/>
-        <Route path="/about" component={About}/>
+        <Route path="/dataFromJSON" component={DataFromJSON}/>
       </Switch>
       <Footer/>
     </>

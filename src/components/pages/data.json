@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Freddie Mercury",
+        "instrument": "lead vocals, piano"
+    },
+    {
+        "id": 2,
+        "name": "Brian May",
+        "instrument": "guitar, vocals"
+    },
+    {
+        "id": 3,
+        "name": "Roger Taylor",
+        "instrument": "drums, vocals"
+    },
+    {
+        "id": 4,
+        "name": "John Deacon",
+        "instrument": "bass"
+    }
+]
