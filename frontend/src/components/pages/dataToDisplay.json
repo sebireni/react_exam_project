@@ -1,22 +1,22 @@
 [
     {
         "id": 1,
-        "name": "Freddie Mercury",
-        "instrument": "lead vocals, piano"
+        "title": "White Fang",
+        "author": "Jack London"
     },
     {
         "id": 2,
-        "name": "Brian May",
-        "instrument": "guitar, vocals"
+        "title": "Lassie Come-Home",
+        "author": "Eric Knight"
     },
     {
         "id": 3,
-        "name": "Roger Taylor",
-        "instrument": "drums, vocals"
+        "title": "Marley & Me",
+        "author": "John Grogan"
     },
     {
         "id": 4,
-        "name": "John Deacon",
-        "instrument": "bass"
+        "title": "Cujo",
+        "author": "Stephen King"
     }
 ]

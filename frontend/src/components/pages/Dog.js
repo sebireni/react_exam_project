@@ -4,19 +4,18 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import * as ReactBootStrap from "react-bootstrap";
 
-const Lyrics = () => {
-  const [lyricsItem, setLyricsItem] = useState(null);
+const Dog = () => {
+  const [dogItem, setDogItem] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const lyricsFunction = async () => {
+  const dogFunction = async () => {
     try {
       setLoading(true);
-      await axios
-        .get(`https://api.lyrics.ovh/v1/queen/bohemian-rhapsody`)
-        .then((res) => {
-          console.log(res);
-          setLyricsItem(res.data.lyrics);
-        });
+      await axios.get(`https://dog.ceo/api/breeds/image/random`).then((res) => {
+        console.log(res);
+        console.log(res.data.message);
+        setDogItem(res.data.message);
+      });
       setLoading(false);
     } catch (e) {
       console.log(e);
@@ -24,29 +23,29 @@ const Lyrics = () => {
   };
 
   useEffect(() => {
-    lyricsFunction();
+    dogFunction();
   }, []);
 
   return (
-    <LyricsContainer>
-      <h3 className="display-6 text-uppercase text-center py-3">
-        Queen - Bohemian rhapsody
-      </h3>
+    <DogContainer>
+      <h3 className="display-6 text-uppercase text-center py-3">Random dog</h3>
+      <p>woof woof!</p>
       <div>
         {loading ? (
-          <p>{lyricsItem}</p>
+          <img src={dogItem} alt="random dog" />
         ) : (
           <ReactBootStrap.Spinner animation="border" variant="warning" />
         )}
+        <img src={dogItem} alt="random dog" />
       </div>
-    </LyricsContainer>
+    </DogContainer>
   );
 };
 
-export default Lyrics;
+export default Dog;
 
 // STYLED COMPONENTS STYLES
-const LyricsContainer = styled.div`
+const DogContainer = styled.div`
   h3 {
     color: var(--tomato);
   }
