@@ -1,8 +1,7 @@
-import axios from "axios";
-import React from "react";
-import styled from "styled-components";
-import { useState, useEffect } from "react";
-import * as ReactBootStrap from "react-bootstrap";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import styled from 'styled-components';
+import * as ReactBootStrap from 'react-bootstrap';
 
 const Dog = () => {
   const [dogItem, setDogItem] = useState(null);
@@ -28,15 +27,15 @@ const Dog = () => {
 
   return (
     <DogContainer>
-      <h3 className="display-6 text-uppercase text-center py-3">Random dog</h3>
+      <h3 className='display-6 text-uppercase text-center py-3'>Random dog</h3>
       <p>woof woof!</p>
       <div>
         {loading ? (
-          <img src={dogItem} alt="random dog" />
+          <img src={dogItem} alt='random dog' />
         ) : (
-          <ReactBootStrap.Spinner animation="border" variant="warning" />
+          <ReactBootStrap.Spinner animation='border' variant='warning' />
         )}
-        <img src={dogItem} alt="random dog" />
+        <img src={dogItem} alt='random dog' />
       </div>
     </DogContainer>
   );
