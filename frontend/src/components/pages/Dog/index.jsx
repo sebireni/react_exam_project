@@ -5,38 +5,34 @@ import * as ReactBootStrap from 'react-bootstrap';
 
 const Dog = () => {
   const [dogItem, setDogItem] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const dogFunction = async () => {
+  const loadDogData = async () => {
     try {
-      setLoading(true);
-      await axios.get(`https://dog.ceo/api/breeds/image/random`).then((res) => {
-        console.log(res);
-        console.log(res.data.message);
-        setDogItem(res.data.message);
-      });
+      const res = await axios.get(`https://dog.ceo/api/breeds/image/random`);
+      setDogItem(res.data.message);
       setLoading(false);
     } catch (e) {
       console.log(e);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    dogFunction();
+    loadDogData();
   }, []);
 
   return (
     <DogContainer>
       <h3 className='display-6 text-uppercase text-center py-3'>Random dog</h3>
       <p>woof woof!</p>
-      <div>
-        {loading ? (
-          <img src={dogItem} alt='random dog' />
+      <ImgWrapper>
+        {!loading ? (
+          <Img src={dogItem} alt='random dog' />
         ) : (
           <ReactBootStrap.Spinner animation='border' variant='warning' />
         )}
-        <img src={dogItem} alt='random dog' />
-      </div>
+      </ImgWrapper>
     </DogContainer>
   );
 };
@@ -45,6 +41,11 @@ export default Dog;
 
 // STYLED COMPONENTS STYLES
 const DogContainer = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+
   h3 {
     color: var(--tomato);
   }
@@ -54,4 +55,12 @@ const DogContainer = styled.div`
     padding-left: 3rem;
     padding-right: 3rem;
   }
+`;
+
+const ImgWrapper = styled.div`
+  max-width: 30%;
+`;
+
+const Img = styled.img`
+  width: 100%;
 `;

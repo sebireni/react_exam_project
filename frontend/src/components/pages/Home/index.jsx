@@ -1,30 +1,25 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [alert, setAlert] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const registration = { firstName, lastName, email };
-
-    fetch('http://localhost:6789/registrations', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(registration),
-    }).then(() => {
-      console.log(JSON.stringify(registration)); //??
-    });
+ 
+    axios.post('http://localhost:6789/registrations', {
+      registration
+    }).then((res) => {
+      setAlert(res.data.message);
+    }).catch((err) => {
+      setAlert(err);
+    })
   };
-
-  // const notify = () => {
-  //   toast("registration submitted");
-  // };
 
   return (
     <MainContainer className='home-main-container'>
@@ -81,11 +76,13 @@ const Home = () => {
             </div>
             <button
               className='btn btn-primary text-uppercase'
-              // onClick={notify}
+              disabled={!alert}
             >
-              Submit
+              {alert ? (
+              <span>{alert}</span>
+            ): 'Submit'}
             </button>
-            {/* <ToastContainer /> */}
+
           </form>
         </div>
       </div>
@@ -95,7 +92,6 @@ const Home = () => {
 
 export default Home;
 
-// STYLED COMPONENTS STYLES
 
 const MainContainer = styled.div`
   h1 {

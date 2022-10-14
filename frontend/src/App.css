@@ -23,7 +23,7 @@ body {
   height: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
-  background: url(./background-image-2.png) center center/cover;
+  background: url(./assets/images/background-image-2.png) center center/cover;
 }
 
 /* .home-main-container {
