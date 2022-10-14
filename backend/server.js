@@ -24,6 +24,7 @@ server.post('/registrations', (req, res) => {
   console.log(req.body);
   data.push(req.body);
   fs.writeFileSync('./data.json', JSON.stringify(data));
+  res.status(201).send({ message: 'submitted successfully' });
 });
 
 const port = 6789;

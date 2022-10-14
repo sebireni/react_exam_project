@@ -6,7 +6,7 @@ const Home = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [alert, setAlert] = useState(null);
+  const [alert, setAlert] = useState('Submit');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +19,7 @@ const Home = () => {
     }).catch((err) => {
       setAlert(err);
     })
+    setAlert('Submitted successfully');
   };
 
   return (
@@ -76,13 +77,10 @@ const Home = () => {
             </div>
             <button
               className='btn btn-primary text-uppercase'
-              disabled={!alert}
+              disabled={alert!=='Submit'}
             >
-              {alert ? (
               <span>{alert}</span>
-            ): 'Submit'}
             </button>
-
           </form>
         </div>
       </div>
